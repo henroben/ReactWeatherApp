@@ -17,7 +17,7 @@ var Examples = (props) => {
     return(
         <div>
             <div className="panel panel-info">
-                <div className="panel-heading">React Weather App Examples</div>
+                <div className="panel-heading">React Weather App Examples!</div>
                 <div className="panel-body">Examples to go here</div>
             </div>
         </div>
