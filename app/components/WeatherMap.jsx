@@ -15,7 +15,7 @@ var WeatherMap = React.createClass({
         };
         return(
             <div>
-                <div ref="map" style={mapStyle} ref="map">Loading map data</div>
+                <div ref="map" style={mapStyle} ref="map">Loading map data...</div>
             </div>
         );
     },
