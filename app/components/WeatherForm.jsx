@@ -14,7 +14,8 @@ var WeatherForm = React.createClass({
     render: function() {
         return(
             <div>
-                <div className="panel panel-default">
+                {/* bootstrap version */}
+                {/* <div className="panel panel-default">
                     <div className="panel-heading">Get Weather</div>
                     <div className="panel-content">
                         <div className="row">
@@ -32,7 +33,13 @@ var WeatherForm = React.createClass({
                             <div className="col-md-1"></div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
+                <form onSubmit={this.onFormSubmit}>
+                    <input type="text" className="form-control" placeholder="Enter city name" ref="location"/>
+
+                    <button className="hollow button expanded">Get Weather</button>
+                </form>
 
             </div>
         )

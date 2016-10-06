@@ -24,13 +24,17 @@ var WeatherMessage = ({temp, location, description, lon, lat}) => {
 
     return(
         <div>
-            <div className="panel panel-success">
+            {/* bootstrap version */}
+            {/* <div className="panel panel-success">
                 <div className="panel-heading">Weather Report</div>
                 <div className="panel-body">
                     <p>It's currently {temp}&deg;C and {description} in {location}</p>
                     <WeatherMap lon={lon} lat={lat}></WeatherMap>
                 </div>
-            </div>
+            </div> */}
+
+            <p className="text-center">It's currently {temp}&deg;C and {description} in {location}</p>
+            <WeatherMap lon={lon} lat={lat}></WeatherMap>
         </div>
     )
 };

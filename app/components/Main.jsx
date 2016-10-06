@@ -22,13 +22,21 @@ var Main = (props) => {
     return (
         <div>
             <WeatherNav/>
-            <div className="container-fluid">
+            {/* bootstrap version */}
+            {/* <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-12">
                         {props.children}
                     </div>
                 </div>
+            </div> */}
+
+            <div className="row">
+                <div className="columns medium-6 large-4 small-centered">
+                    {props.children}
+                </div>
             </div>
+
         </div>
     );
 };
