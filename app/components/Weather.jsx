@@ -15,7 +15,12 @@ var Weather = React.createClass({
 
         that.setState({
             isLoading: true,
-            errorMessage: undefined
+            errorMessage: undefined,
+            location: undefined,
+            temp: undefined,
+            lon: undefined,
+            lat: undefined,
+            description: undefined
         });
 
         openWeatherMap.getTemp(location).then(function(weatherDetails) {
@@ -30,17 +35,30 @@ var Weather = React.createClass({
                 isLoading: false
             });
         }, function(e) {
+            console.warn('error called');
             console.log(e);
             that.setState({
                 location: null,
-                lon: null,
-                lat: null,
-                temp: null,
-                description: null,
                 isLoading: false,
                 errorMessage: e.message
             });
         });
+    },
+    componentDidMount: function() {
+        var location = this.props.location.query.location;
+
+        if(location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/';
+        }
+    },
+    componentWillReceiveProps: function(newProps) {
+        var location = newProps.location.query.location;
+
+        if(location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/';
+        }
     },
     render: function() {
         var {isLoading, temp, location, description, lon, lat, errorMessage} = this.state;
@@ -50,14 +68,14 @@ var Weather = React.createClass({
             if(isLoading) {
                 return <div className="text-center">Getting weather...</div>;
             } else if(temp && location) {
-                return <WeatherMessage location={location} temp={temp} description={description} lon={lon} lat={lat} />;
+                return <WeatherMessage location={location} temp={temp} description={description} lon={lon} lat={lat}></WeatherMessage>;
             }
         }
 
         function renderError() {
             if(typeof errorMessage === 'string') {
                 return(
-                    <ErrorModal message={errorMessage} />
+                    <ErrorModal message={errorMessage}></ErrorModal>
                 )
             }
         }
@@ -71,8 +89,8 @@ var Weather = React.createClass({
                     {renderMessage()}
                 </div>
                 <div className="col-xs-hidden col-md-1"></div> */}
-                <h1 className="text-center">Get Weather</h1>
-                <WeatherForm onSearch={this.handleSearch} />
+                <h1 className="text-center page-title">Get Weather</h1>
+                <WeatherForm onSearch={this.handleSearch}></WeatherForm>
                 {renderMessage()}
                 {renderError()}
             </div>

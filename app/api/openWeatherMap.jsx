@@ -28,7 +28,8 @@ module.exports = {
                 return weatherDetails;
             }
         }, function(res) {
-            throw new Error(res.data.message);
+            //console.warn('error is ', res);
+            throw new Error(res);
         });
     }
 }
